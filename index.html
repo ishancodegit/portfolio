@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ishan — Developer Portfolio</title>
+<meta name="description" content="Ishan — developer. Browsers, browser extensions, IoT, AI tooling and web apps. Projects: TuffBrowser, Calisthenics Workout, Inbox Insights, GeoScan, Scam Checker." />
+<meta property="og:title" content="Ishan — Developer Portfolio" />
+<meta property="og:description" content="Browsers, extensions, IoT and AI tooling. Selected projects by Ishan." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+<style>
+  :root {
+    --bg: #0a0b0f;
+    --bg-soft: #12141c;
+    --card: #15171f;
+    --card-hover: #1b1e29;
+    --border: #262a36;
+    --text: #e7e9ee;
+    --muted: #9aa0ad;
+    --accent: #ffd233;
+    --accent-2: #7c5cff;
+    --green: #34d399;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(1200px 600px at 50% -200px, #1a1c2e 0%, var(--bg) 60%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Header / hero */
+  header { padding: 96px 0 56px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 28px;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+  h1 { font-size: clamp(40px, 7vw, 68px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; }
+  h1 .grad {
+    background: linear-gradient(110deg, var(--accent) 10%, var(--accent-2) 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .lead { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 640px; }
+  .links { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 11px 18px; font-size: 15px; font-weight: 500;
+    background: var(--card); transition: all .15s ease;
+  }
+  .btn:hover { background: var(--card-hover); border-color: #3a3f50; transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); color: #1a1500; border-color: var(--accent); font-weight: 600; }
+  .btn.primary:hover { filter: brightness(1.06); }
+
+  /* Sections */
+  .section-label {
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  section { padding: 40px 0; }
+
+  /* Project grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 26px; display: flex; flex-direction: column; transition: all .18s ease;
+    position: relative; overflow: hidden;
+  }
+  .card:hover { background: var(--card-hover); border-color: #3a3f50; transform: translateY(-3px); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .icon {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    font-size: 22px; background: var(--bg-soft); border: 1px solid var(--border);
+  }
+  .pill { font-size: 12px; color: var(--green); border: 1px solid #1f4d3a; background: #0f2a20; padding: 4px 10px; border-radius: 999px; }
+  .pill.wip { color: var(--accent); border-color: #4d4422; background: #2a2410; }
+  .card h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .card p { margin-top: 10px; color: var(--muted); font-size: 15px; flex: 1; }
+  .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag { font-size: 12px; color: var(--text); background: var(--bg-soft); border: 1px solid var(--border); padding: 4px 10px; border-radius: 7px; }
+  .card-links { margin-top: 18px; display: flex; gap: 16px; font-size: 14px; }
+  .card-links a { color: var(--accent); font-weight: 500; }
+  .card-links a:hover { text-decoration: underline; }
+  .card-links a.muted { color: var(--muted); }
+
+  /* About */
+  .about { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .about p { color: var(--muted); font-size: 16px; }
+  .about p + p { margin-top: 14px; }
+  .stack { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+  footer { padding: 60px 0 80px; text-align: center; color: var(--muted); font-size: 14px; }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+    header { padding: 64px 0 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge"><span class="dot"></span> Available for projects &amp; collaboration</span>
+    <h1>Hi, I'm Ishan.<br><span class="grad">I build things that ship.</span></h1>
+    <p class="lead">Developer working across desktop apps, browser extensions, IoT hardware, and AI-powered web tools. Below are a few projects I've designed and built end-to-end.</p>
+    <div class="links">
+      <a class="btn primary" href="#projects">View projects ↓</a>
+      <a class="btn" href="https://github.com/ishancodegit" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:ishngoated@gmail.com">Email</a>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="section-label">Selected work</div>
+    <div class="grid">
+
+      <!-- TuffBrowser -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">🌐</div>
+          <span class="pill wip">Desktop app</span>
+        </div>
+        <h3>TuffBrowser</h3>
+        <p>A minimal, fast desktop web browser built for power users. Custom tabbed UI, a clean onboarding flow, and a stripped-down Chromium shell focused on speed over clutter.</p>
+        <div class="tags">
+          <span class="tag">Electron</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML / CSS</span>
+        </div>
+      </article>
+
+      <!-- Calisthenics Workout -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">💪</div>
+          <span class="pill">Live</span>
+        </div>
+        <h3>Calisthenics Workout</h3>
+        <p>A guided bodyweight-training app with auto rest timers, hold countdowns, and a progress log. Uses on-device pose detection (MediaPipe) to count pushup reps from your camera — no video ever leaves the browser.</p>
+        <div class="tags">
+          <span class="tag">Next.js 15</span>
+          <span class="tag">Tailwind v4</span>
+          <span class="tag">MediaPipe</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/ishancodegit/calisthenics-workout" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </article>
+
+      <!-- Inbox Insights -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">📥</div>
+          <span class="pill">Live</span>
+        </div>
+        <h3>Inbox Insights</h3>
+        <p>A Chrome (Manifest V3) extension that analyzes a shared Gmail or Outlook inbox for trends in client requests and complaints — themes, per-client breakdowns, cross-client patterns, and month-over-month movement. Runs fully client-side; no data leaves the machine.</p>
+        <div class="tags">
+          <span class="tag">Chrome MV3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gmail / Outlook</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/ishancodegit/inbox-insights" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </article>
+
+      <!-- GeoScan -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">📡</div>
+          <span class="pill wip">IoT / Hardware</span>
+        </div>
+        <h3>GeoScan</h3>
+        <p>An erosion and landslide early-warning system. An ESP32 reads ultrasonic distance and soil-moisture sensors to detect ground movement, surfaces live readings on an LCD, and flags abnormal erosion — paired with a companion desktop app.</p>
+        <div class="tags">
+          <span class="tag">ESP32</span>
+          <span class="tag">C++ / Arduino</span>
+          <span class="tag">Sensors</span>
+        </div>
+      </article>
+
+      <!-- Scam Checker -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">🛡️</div>
+          <span class="pill wip">Backend</span>
+        </div>
+        <h3>Scam Checker — SeniorShield</h3>
+        <p>A backend service that helps protect seniors from online scams. It mines real scam reports from Reddit and uses an LLM to assess whether a message, link, or offer looks fraudulent, returning a plain-language risk verdict.</p>
+        <div class="tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">OpenAI API</span>
+          <span class="tag">Reddit API</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <div class="about">
+      <p>I'm a developer who likes building complete, working products — from the metal up. My projects span a desktop browser, a published browser extension, an IoT environmental-monitoring rig, and AI-backed web services.</p>
+      <p>I'm comfortable across the stack: shipping React/Next.js front-ends, writing Node backends, wiring up microcontrollers, and integrating ML models where they actually add value. I care about things that ship and that real people can use.</p>
+      <div class="stack">
+        <span class="tag">JavaScript / TypeScript</span>
+        <span class="tag">React &amp; Next.js</span>
+        <span class="tag">Node.js / Express</span>
+        <span class="tag">Electron</span>
+        <span class="tag">C++ / Arduino / ESP32</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">OpenAI / MediaPipe</span>
+        <span class="tag">Chrome Extensions</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built &amp; hosted by Ishan · <a href="https://github.com/ishancodegit" target="_blank" rel="noopener">github.com/ishancodegit</a> · <a href="mailto:ishngoated@gmail.com">ishngoated@gmail.com</a></p>
+    <p style="margin-top:8px; opacity:.6;">ishan.is-a.dev</p>
+  </footer>
+
+</div>
+</body>
+</html>
