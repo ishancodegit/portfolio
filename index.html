@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ishan — Developer Portfolio</title>
-<meta name="description" content="Ishan — developer. Browsers, browser extensions, IoT, AI tooling and web apps. Projects: Flux, Calisthenics Workout, Inbox Insights, GeoScan, Scam Checker." />
+<meta name="description" content="Ishan — full-stack developer. Cold-outreach SaaS, browsers, browser extensions, IoT and AI tooling. Projects: ColdMailer, Calisthenics Workout, Inbox Insights, Flux, GeoScan, Scam Checker." />
 <meta property="og:title" content="Ishan — Developer Portfolio" />
-<meta property="og:description" content="Browsers, extensions, IoT and AI tooling. Selected projects by Ishan." />
+<meta property="og:description" content="Full-stack SaaS, browsers, extensions, IoT and AI tooling. Selected projects by Ishan." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 <style>
@@ -25,7 +25,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: radial-gradient(1200px 600px at 50% -200px, #1a1c2e 0%, var(--bg) 60%);
+    background: radial-gradient(1200px 600px at 50% -200px, #14233a 0%, var(--bg) 60%);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
     line-height: 1.6;
@@ -70,28 +70,43 @@
   section { padding: 40px 0; }
 
   /* Project grid */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: start; }
   .card {
     background: var(--card); border: 1px solid var(--border); border-radius: 18px;
     padding: 34px; display: flex; flex-direction: column; transition: all .18s ease;
     position: relative; overflow: hidden;
   }
   .card:hover { background: var(--card-hover); border-color: #3a3f50; transform: translateY(-3px); }
+  .card.featured { grid-column: 1 / -1; }
+  .card.featured::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px 240px at 88% -40%, rgba(34,211,238,.12), transparent 70%);
+  }
   .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .icon {
     width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
     font-size: 27px; background: var(--bg-soft); border: 1px solid var(--border);
   }
-  .pill { font-size: 12px; color: var(--green); border: 1px solid #1f4d3a; background: #0f2a20; padding: 4px 10px; border-radius: 999px; }
-  .pill.wip { color: var(--accent); border-color: #4d4422; background: #2a2410; }
+  .pill { font-size: 12px; color: var(--green); border: 1px solid #1f4d3a; background: #0f2a20; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .pill.alt { color: var(--accent); border-color: #14414d; background: #08252c; }
   .card h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
-  .card p { margin-top: 12px; color: var(--muted); font-size: 16.5px; flex: 1; }
-  .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 7px; }
+  .card .blurb { margin-top: 12px; color: var(--muted); font-size: 16.5px; }
+  .featured .feat-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 14px 40px; align-items: start; margin-top: 4px; }
+
+  .feats { margin-top: 16px; list-style: none; display: grid; gap: 9px; }
+  .feats li { position: relative; padding-left: 22px; color: var(--text); font-size: 15px; line-height: 1.5; }
+  .feats li::before {
+    content: ""; position: absolute; left: 3px; top: 9px; width: 7px; height: 7px;
+    border-radius: 50%; background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  }
+  .feats li b { color: var(--text); font-weight: 600; }
+
+  .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
   .tag { font-size: 13px; color: var(--text); background: var(--bg-soft); border: 1px solid var(--border); padding: 5px 12px; border-radius: 8px; }
-  .card-links { margin-top: 18px; display: flex; gap: 16px; font-size: 15px; }
-  .card-links a { color: var(--accent); font-weight: 500; }
+  .card-links { margin-top: 20px; display: flex; gap: 18px; font-size: 15px; }
+  .card-links a { color: var(--accent); font-weight: 600; }
   .card-links a:hover { text-decoration: underline; }
-  .card-links a.muted { color: var(--muted); }
+  .card-links a.muted { color: var(--muted); font-weight: 500; }
 
   /* About */
   .about { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 40px; }
@@ -102,8 +117,9 @@
   footer { padding: 60px 0 80px; text-align: center; color: var(--muted); font-size: 14px; }
   footer a { color: var(--accent); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; }
+    .featured .feat-grid { grid-template-columns: 1fr; gap: 4px; }
     header { padding: 64px 0 40px; }
   }
 </style>
@@ -114,7 +130,7 @@
   <header>
     <span class="badge"><span class="dot"></span> Available for projects &amp; collaboration</span>
     <h1>Hi, I'm Ishan.<br><span class="grad">I build things that ship.</span></h1>
-    <p class="lead">Developer working across desktop apps, browser extensions, IoT hardware, and AI-powered web tools. Below are a few projects I've designed and built end-to-end.</p>
+    <p class="lead">Full-stack developer. I've built and shipped a cold-outreach SaaS, a desktop browser, published browser extensions, an IoT early-warning rig, and AI-powered web tools — each designed and built end to end.</p>
     <div class="links">
       <a class="btn primary" href="#projects">View projects ↓</a>
       <a class="btn" href="https://github.com/ishancodegit" target="_blank" rel="noopener">GitHub</a>
@@ -126,18 +142,38 @@
     <div class="section-label">Selected work</div>
     <div class="grid">
 
-      <!-- TuffBrowser -->
-      <article class="card">
+      <!-- ColdMailer — featured -->
+      <article class="card featured">
         <div class="card-top">
-          <div class="icon">🌐</div>
-          <span class="pill wip">Desktop app</span>
+          <div class="icon">✉️</div>
+          <span class="pill">Live SaaS</span>
         </div>
-        <h3>Flux</h3>
-        <p>A minimal, fast desktop web browser built for power users. Custom tabbed UI, a clean onboarding flow, and a stripped-down Chromium shell focused on speed over clutter.</p>
+        <h3>ColdMailer</h3>
+        <p class="blurb">A full cold-outreach SaaS — find leads, research them, and generate personalized cold emails people actually reply to, all in one place. Built end to end with authentication, subscription billing, a dual-model AI pipeline, and a one-click Chrome extension.</p>
+        <div class="feat-grid">
+          <ul class="feats">
+            <li><b>Lead finder</b> — scrapes and enriches prospect data from the web (Cheerio) so you start from real contacts, not a blank page.</li>
+            <li><b>AI generation</b> — drafts emails with Claude and Gemini, tuned for replies over templates everyone ignores.</li>
+            <li><b>Email grader</b> — scores a draft and suggests fixes before you hit send.</li>
+          </ul>
+          <ul class="feats">
+            <li><b>Chrome extension</b> — generate a tailored email from any LinkedIn profile in one click.</li>
+            <li><b>Auth &amp; data</b> — Supabase auth + Postgres with row-level security; per-user email history and research saved per account.</li>
+            <li><b>Billing</b> — Stripe subscriptions (from $19/mo), customer portal, and webhook-driven entitlements.</li>
+          </ul>
+        </div>
         <div class="tags">
-          <span class="tag">Electron</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">HTML / CSS</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Supabase / Postgres</span>
+          <span class="tag">Stripe</span>
+          <span class="tag">Claude</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">Chrome Extension</span>
+        </div>
+        <div class="card-links">
+          <a href="https://coldemailer-alpha.vercel.app" target="_blank" rel="noopener">Live site →</a>
+          <a class="muted" href="https://github.com/ishancodegit/coldemailer" target="_blank" rel="noopener">GitHub</a>
         </div>
       </article>
 
@@ -148,7 +184,14 @@
           <span class="pill">Live</span>
         </div>
         <h3>Calisthenics Workout</h3>
-        <p>A guided bodyweight-training app with auto rest timers, hold countdowns, and a progress log. Uses on-device pose detection (MediaPipe) to count pushup reps from your camera — no video ever leaves the browser.</p>
+        <p class="blurb">A guided bodyweight-training app built from a printed beginner program, with a timer for every set and on-device camera rep-counting.</p>
+        <ul class="feats">
+          <li><b>Three full sessions</b> transcribed from the program — sets, reps and form notes.</li>
+          <li><b>Timers everywhere</b> — auto rest timers plus dedicated hold countdowns with a progress ring and beeps.</li>
+          <li><b>Camera rep counter</b> using MediaPipe Pose — tracks elbow angle to count pushups locally; no video leaves the device.</li>
+          <li><b>Progress log</b> in localStorage with weekly counts and last-done dates.</li>
+          <li>Screen wake-lock during sessions; mobile-friendly, no backend.</li>
+        </ul>
         <div class="tags">
           <span class="tag">Next.js 15</span>
           <span class="tag">Tailwind v4</span>
@@ -167,7 +210,14 @@
           <span class="pill">Live</span>
         </div>
         <h3>Inbox Insights</h3>
-        <p>A Chrome (Manifest V3) extension that analyzes a shared Gmail or Outlook inbox for trends in client requests and complaints — themes, per-client breakdowns, cross-client patterns, and month-over-month movement. Runs fully client-side; no data leaves the machine.</p>
+        <p class="blurb">A Chrome (Manifest V3) extension that reads a shared Gmail or Outlook inbox and surfaces what clients are asking for and complaining about — entirely client-side.</p>
+        <ul class="feats">
+          <li><b>Request vs. complaint</b> classification of every email via keyword/intent signals.</li>
+          <li><b>10 themes</b> tagged automatically — billing, bugs, delays, access, cancellation, and more.</li>
+          <li><b>"Needs attention"</b> queue flags urgency, escalation and legal language for triage.</li>
+          <li><b>Cross-client patterns</b> — themes ranked by how many distinct clients raised them.</li>
+          <li>Month-over-month trends, most-active clients and top keywords; drill into any theme.</li>
+        </ul>
         <div class="tags">
           <span class="tag">Chrome MV3</span>
           <span class="tag">JavaScript</span>
@@ -178,14 +228,41 @@
         </div>
       </article>
 
+      <!-- Flux -->
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">🌐</div>
+          <span class="pill alt">Desktop app</span>
+        </div>
+        <h3>Flux</h3>
+        <p class="blurb">A minimal, fast desktop browser for power users — a stripped-down Chromium shell with a custom tabbed UI and keyboard-first navigation.</p>
+        <ul class="feats">
+          <li><b>Custom multi-tab interface</b> with its own guided onboarding flow.</li>
+          <li><b>"!bangs"</b> — DuckDuckGo-style shortcuts to jump straight into a site's search.</li>
+          <li><b>Find-in-page</b> and a distraction-free <b>reader mode</b>.</li>
+          <li>Built on Electron with isolated <code>webview</code> rendering and preload bridges.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Electron</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML / CSS</span>
+        </div>
+      </article>
+
       <!-- GeoScan -->
       <article class="card">
         <div class="card-top">
           <div class="icon">📡</div>
-          <span class="pill wip">IoT / Hardware</span>
+          <span class="pill alt">IoT / Hardware</span>
         </div>
         <h3>GeoScan</h3>
-        <p>An erosion and landslide early-warning system. An ESP32 reads ultrasonic distance and soil-moisture sensors to detect ground movement, surfaces live readings on an LCD, and flags abnormal erosion — paired with a companion desktop app.</p>
+        <p class="blurb">An ESP32-based erosion and landslide early-warning rig that watches the ground and raises a flag the moment it starts to move.</p>
+        <ul class="feats">
+          <li><b>Dual sensing</b> — an ultrasonic sensor measures ground distance while a soil-moisture probe tracks saturation.</li>
+          <li><b>Baseline + threshold</b> — learns a baseline, then warns when erosion crosses a configurable centimetre threshold.</li>
+          <li><b>Live LCD readout</b> on a 16×2 I²C display, with serial telemetry to a companion desktop app.</li>
+          <li>Written in C++/Arduino for the ESP32 (Wire/I²C, timed update loops).</li>
+        </ul>
         <div class="tags">
           <span class="tag">ESP32</span>
           <span class="tag">C++ / Arduino</span>
@@ -197,10 +274,16 @@
       <article class="card">
         <div class="card-top">
           <div class="icon">🛡️</div>
-          <span class="pill wip">Backend</span>
+          <span class="pill alt">Backend</span>
         </div>
         <h3>Scam Checker — SeniorShield</h3>
-        <p>A backend service that helps protect seniors from online scams. It mines real scam reports from Reddit and uses an LLM to assess whether a message, link, or offer looks fraudulent, returning a plain-language risk verdict.</p>
+        <p class="blurb">A backend that helps protect seniors from online scams by checking suspicious messages against real-world scam reports and an LLM risk assessment.</p>
+        <ul class="feats">
+          <li><b>/analyze endpoint</b> takes a message or link and returns a plain-language risk verdict.</li>
+          <li><b>Grounded in reality</b> — mines live scam reports from Reddit to inform the assessment.</li>
+          <li><b>LLM reasoning</b> weighs language patterns and explains <i>why</i> something looks fraudulent.</li>
+          <li>Express API with CORS, ready to back a senior-friendly front end.</li>
+        </ul>
         <div class="tags">
           <span class="tag">Node.js</span>
           <span class="tag">Express</span>
@@ -215,16 +298,18 @@
   <section id="about">
     <div class="section-label">About</div>
     <div class="about">
-      <p>I'm a developer who likes building complete, working products — from the metal up. My projects span a desktop browser, a published browser extension, an IoT environmental-monitoring rig, and AI-backed web services.</p>
-      <p>I'm comfortable across the stack: shipping React/Next.js front-ends, writing Node backends, wiring up microcontrollers, and integrating ML models where they actually add value. I care about things that ship and that real people can use.</p>
+      <p>I'm a full-stack developer who likes building complete, working products — from the metal up. My work spans a subscription SaaS with auth and billing, a desktop browser, published browser extensions, an IoT environmental-monitoring rig, and AI-backed web services.</p>
+      <p>I'm comfortable across the stack: shipping React/Next.js front-ends, designing Postgres schemas with row-level security, wiring up Stripe and webhooks, integrating LLMs where they actually add value, and flashing firmware onto microcontrollers. I care about things that ship and that real people can use.</p>
       <div class="stack">
         <span class="tag">JavaScript / TypeScript</span>
         <span class="tag">React &amp; Next.js</span>
         <span class="tag">Node.js / Express</span>
+        <span class="tag">Supabase / Postgres</span>
+        <span class="tag">Stripe</span>
         <span class="tag">Electron</span>
         <span class="tag">C++ / Arduino / ESP32</span>
         <span class="tag">Tailwind CSS</span>
-        <span class="tag">OpenAI / MediaPipe</span>
+        <span class="tag">Claude / Gemini / OpenAI</span>
         <span class="tag">Chrome Extensions</span>
       </div>
     </div>
