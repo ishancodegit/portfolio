@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ishan — Developer Portfolio</title>
-<meta name="description" content="Ishan — developer. Browsers, browser extensions, IoT, AI tooling and web apps. Projects: TuffBrowser, Calisthenics Workout, Inbox Insights, GeoScan, Scam Checker." />
+<meta name="description" content="Ishan — developer. Browsers, browser extensions, IoT, AI tooling and web apps. Projects: Flux, Calisthenics Workout, Inbox Insights, GeoScan, Scam Checker." />
 <meta property="og:title" content="Ishan — Developer Portfolio" />
 <meta property="og:description" content="Browsers, extensions, IoT and AI tooling. Selected projects by Ishan." />
 <meta property="og:type" content="website" />
@@ -18,8 +18,8 @@
     --border: #262a36;
     --text: #e7e9ee;
     --muted: #9aa0ad;
-    --accent: #ffd233;
-    --accent-2: #7c5cff;
+    --accent: #22d3ee;
+    --accent-2: #3b82f6;
     --green: #34d399;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,8 +57,8 @@
     background: var(--card); transition: all .15s ease;
   }
   .btn:hover { background: var(--card-hover); border-color: #3a3f50; transform: translateY(-1px); }
-  .btn.primary { background: var(--accent); color: #1a1500; border-color: var(--accent); font-weight: 600; }
-  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.primary { background: linear-gradient(110deg, var(--accent), var(--accent-2)); color: #04121f; border-color: transparent; font-weight: 600; }
+  .btn.primary:hover { filter: brightness(1.08); }
 
   /* Sections */
   .section-label {
@@ -131,7 +131,7 @@
           <div class="icon">🌐</div>
           <span class="pill wip">Desktop app</span>
         </div>
-        <h3>TuffBrowser</h3>
+        <h3>Flux</h3>
         <p>A minimal, fast desktop web browser built for power users. Custom tabbed UI, a clean onboarding flow, and a stripped-down Chromium shell focused on speed over clutter.</p>
         <div class="tags">
           <span class="tag">Electron</span>
